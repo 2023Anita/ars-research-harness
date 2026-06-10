@@ -25,3 +25,4 @@ git status --short
 - Adds S0-S9 NHANES undiagnosed diabetes case study.
 - Adds validator, templates, data small pack, tables, figures, and DOCX manuscript package.
 - Adds bilingual documentation and hand-drawn workflow diagrams.
+- Adds teaching courseware notes for using the repository in AI medical research training.

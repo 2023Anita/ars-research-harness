@@ -6,6 +6,8 @@ The included case study uses the NHANES 2017-2018 public-use files to build a ma
 
 ![Research-to-Paper Harness](assets/diagrams/01-overview-japanese-handdrawn.png)
 
+Figure 1 frames the repository as a complete path from public health data to a submission-ready package. It is useful as the opening slide in a workshop: the point is not to let AI jump straight to a manuscript, but to keep each research decision visible.
+
 ## Why This Exists
 
 AI can draft quickly, but research work needs staged decisions: research question, methods, analysis, interpretation, drafting, citation checks, peer-review simulation, revision, and final packaging. This project keeps those stages separate.
@@ -47,17 +49,35 @@ Key outputs:
 
 ![Checkpoint Loop](assets/diagrams/02-checkpoint-loop-japanese-handdrawn.png)
 
+Figure 2 shows the central control loop: plan, produce an artifact, validate it, wait for human confirmation, then move to the next stage. The "no auto-continue" rule is the main difference between this harness and ordinary one-shot AI writing.
+
 S0-S9 covers intake, research-question framing, methods planning, data execution, interpretation, outline, draft, integrity checks, reviewer-style revision, and final package generation.
 
 ## Engineering View
 
 ![Harness Architecture](assets/diagrams/03-harness-architecture-japanese-handdrawn.png)
 
+Figure 3 explains the engineering structure: router, workflow, stage contract, state JSON, validator, artifacts, and human confirmation. This makes the project a workflow harness rather than a long prompt.
+
 This is a workflow harness, not just a prompt library. The repository includes stage contracts, state artifacts, validation scripts, example outputs, and human confirmation gates.
 
 ## Case Study
 
 ![NHANES Case Path](assets/diagrams/04-nhanes-case-path-japanese-handdrawn.png)
+
+Figure 4 maps the case study: NHANES small-pack files become survey-weighted results, tables, figures, and a DOCX package.
+
+## Teaching Use
+
+This repository can be used as a teaching module for a 90-120 minute AI medical research workshop:
+
+1. Use Figure 1 to introduce the full research-to-paper chain.
+2. Use Figure 2 to explain checkpoint-first execution.
+3. Use Figure 3 to explain the harness engineering layer.
+4. Use Figure 4 to walk through the NHANES example.
+5. Open `workflow-run.json`, `checkpoints/`, `results/`, and the final DOCX package as live artifacts.
+
+Chinese teaching notes are available in [docs/07-teaching-courseware.zh-CN.md](docs/07-teaching-courseware.zh-CN.md).
 
 The NHANES example demonstrates how a public health dataset becomes survey-weighted results, tables, figures, a manuscript draft, a simulated review trail, and a Word submission package.
 

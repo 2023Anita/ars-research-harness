@@ -1,0 +1,18 @@
+S8b fasting-weighted sensitivity analysis
+R version: R version 4.5.1 (2025-06-13) 
+survey version: 4.5 
+Output directory: examples/nhanes-undiagnosed-diabetes/results/S8b
+
+# A tibble: 2 × 2
+  metric                            value
+  <chr>                             <int>
+1 fasting_subsample_n                1807
+2 fasting_design_degrees_of_freedom    15
+
+Prevalence estimates:
+# A tibble: 2 × 8
+  outcome   unweighted_n unweighted_cases weighted_percent ci_low ci_high weight
+  <chr>            <int>            <int>            <dbl>  <dbl>   <dbl> <chr> 
+1 HbA1c-de…         1807               63             1.84   1.29    2.62 WTSAF…
+2 HbA1c or…         1807              115             4.06   3.12    5.28 WTSAF…
+# ℹ 1 more variable: design_df <int>

@@ -1,0 +1,23 @@
+S3 NHANES undiagnosed diabetes analysis
+R version: R version 4.5.1 (2025-06-13) 
+survey version: 4.5 
+Output directory: examples/nhanes-undiagnosed-diabetes/results/S3
+
+# A tibble: 6 × 2
+  step                                              n
+  <chr>                                         <int>
+1 NHANES 2017-2018 interview participants        9254
+2 Adults aged >=20 years                         5569
+3 Adults with diabetes questionnaire             5569
+4 Self-reported no diabetes                      4517
+5 Self-reported no diabetes and HbA1c available  4051
+6 After excluding pregnant participants          4004
+
+Overall prevalence:
+# A tibble: 2 × 6
+  outcome          unweighted_n unweighted_cases weighted_percent ci_low ci_high
+  <chr>                   <int>            <int>            <dbl>  <dbl>   <dbl>
+1 HbA1c-defined u…         4004              150             2.17   1.74    2.70
+2 HbA1c-defined p…         4004             1254            24.8   22.6    27.0 
+
+Model terms written to weighted_logistic_models.csv

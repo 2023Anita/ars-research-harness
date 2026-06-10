@@ -1,0 +1,13 @@
+| variable | odds_ratio | ci_low | ci_high | beta | se | design_df | model_n |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Age, per year | 1.03 | 0.997 | 1.065 | 0.03 | 0.0119 | 15 | 3707 |
+| Female vs male | 1.599 | 0.628 | 4.07 | 0.4691 | 0.3366 | 15 | 3707 |
+| Mexican American vs Non-Hispanic White | 2.785 | 0.662 | 11.712 | 1.0244 | 0.5173 | 15 | 3707 |
+| Non-Hispanic Asian vs Non-Hispanic White | 5.108 | 1.725 | 15.124 | 1.6308 | 0.391 | 15 | 3707 |
+| Non-Hispanic Black vs Non-Hispanic White | 3.819 | 1.497 | 9.746 | 1.3401 | 0.3374 | 15 | 3707 |
+| Other Hispanic vs Non-Hispanic White | 2.89 | 0.534 | 15.647 | 1.0611 | 0.6084 | 15 | 3707 |
+| Other/Multiracial vs Non-Hispanic White | 1.341 | 0.269 | 6.694 | 0.2936 | 0.579 | 15 | 3707 |
+| Obesity vs no obesity | 5.064 | 2.574 | 9.963 | 1.6221 | 0.2438 | 15 | 3707 |
+| Measured hypertension vs none | 1.394 | 0.599 | 3.245 | 0.3323 | 0.3042 | 15 | 3707 |
+| Non-HDL cholesterol, per mg/dL | 1.015 | 1.008 | 1.022 | 0.0149 | 0.0026 | 15 | 3707 |
+| Any reported physical activity vs none | 0.475 | 0.208 | 1.085 | -0.7452 | 0.2978 | 15 | 3707 |

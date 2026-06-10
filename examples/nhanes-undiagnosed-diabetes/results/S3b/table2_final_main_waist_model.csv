@@ -1,0 +1,12 @@
+variable,odds_ratio,ci_low,ci_high,beta,se,design_df,model_n
+"Age, per year",1.025,0.983,1.068,0.0246,0.0149,15,3621
+Female vs male,1.861,0.728,4.756,0.6212,0.338,15,3621
+Mexican American vs Non-Hispanic White,3.072,0.608,15.538,1.1225,0.5838,15,3621
+Non-Hispanic Asian vs Non-Hispanic White,5.986,1.859,19.276,1.7894,0.4212,15,3621
+Non-Hispanic Black vs Non-Hispanic White,4.099,1.334,12.6,1.4108,0.4044,15,3621
+Other Hispanic vs Non-Hispanic White,3.737,0.665,20.989,1.3184,0.6215,15,3621
+Other/Multiracial vs Non-Hispanic White,1.774,0.39,8.077,0.5731,0.546,15,3621
+"Waist circumference, per cm",1.051,1.03,1.073,0.0499,0.0075,15,3621
+"Mean systolic BP, per mmHg",1.012,0.985,1.04,0.0124,0.0098,15,3621
+"Non-HDL cholesterol, per mg/dL",1.016,1.008,1.023,0.0157,0.0026,15,3621
+Any reported physical activity vs none,0.478,0.211,1.078,-0.7391,0.2934,15,3621

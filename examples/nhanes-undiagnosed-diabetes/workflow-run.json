@@ -1,0 +1,163 @@
+{
+  "workflow": "academic-research-suite-checkpoint-first",
+  "topic": "NHANES 2017-2018 慢病风险数据分析与文章写作",
+  "createdAt": "2026-06-10T08:55:51+0800",
+    "updatedAt": "2026-06-10T13:46:42+0800",
+    "currentStage": "S9",
+  "stopPoint": "sci-submission-ready-draft-after-integrity-check",
+  "checkpointFirst": true,
+  "autoContinueAllowed": false,
+  "stages": {
+    "S0_intake": {
+      "status": "complete",
+      "artifact": "checkpoints/stage-S0-intake.md",
+      "userConfirmed": true,
+      "confirmedAt": "2026-06-10T08:55:51+0800"
+    },
+    "S1_research_question": {
+      "status": "complete",
+      "artifact": "checkpoints/stage-S1-research-question.md",
+      "userConfirmed": true,
+      "confirmedAt": "2026-06-10T09:12:00+0800"
+    },
+    "S2_method_analysis_plan": {
+      "status": "complete",
+      "artifact": "checkpoints/stage-S2-method-plan.md",
+      "userConfirmed": true,
+      "confirmedAt": "2026-06-10T09:20:00+0800"
+    },
+    "S3_evidence_data_execution": {
+      "status": "complete",
+      "artifact": "checkpoints/stage-S3-evidence-results.md",
+      "userConfirmed": true,
+      "confirmedAt": "2026-06-10T09:36:00+0800"
+    },
+    "S4_interpretation": {
+      "status": "complete",
+      "artifact": "checkpoints/stage-S4-interpretation.md",
+      "userConfirmed": true,
+      "confirmedAt": "2026-06-10T09:44:00+0800"
+    },
+    "S5_outline": {
+      "status": "complete",
+      "artifact": "checkpoints/stage-S5-outline.md",
+      "userConfirmed": true,
+      "confirmedAt": "2026-06-10T10:12:00+0800"
+    },
+    "S6_draft": {
+      "status": "complete",
+      "artifact": "checkpoints/stage-S6-draft.md",
+      "userConfirmed": true,
+      "confirmedAt": "2026-06-10T12:20:30+0800"
+    },
+    "S7_integrity_citation_check": {
+      "status": "complete",
+      "artifact": "checkpoints/stage-S7-integrity-citation-check.md",
+      "userConfirmed": true,
+      "confirmedAt": "2026-06-10T13:17:03+0800"
+    },
+        "S8_review_revision": {
+            "status": "complete",
+            "artifact": "checkpoints/stage-S8-review-revision.md",
+            "userConfirmed": true,
+            "confirmedAt": "2026-06-10T13:42:27+0800"
+        },
+        "S9_finalize_closeout": {
+            "status": "complete",
+            "artifact": "checkpoints/stage-S9-finalize-closeout.md",
+            "userConfirmed": true,
+            "confirmedAt": "2026-06-10T13:46:42+0800"
+        }
+  },
+  "artifacts": {
+        "runDirectory": "examples/nhanes-undiagnosed-diabetes",
+        "finalReport": "",
+        "s7bCitationCleanDraft": "checkpoints/stage-S7b-citation-clean-draft.md",
+        "s7bReport": "checkpoints/stage-S7b-final-reference-verification.md",
+        "s8bRevisedManuscript": "checkpoints/stage-S8b-revised-manuscript.md",
+        "s8bRevisionReport": "checkpoints/stage-S8b-revision-implementation.md",
+        "s8bTablesFiguresDirectory": "results/S8b",
+        "s9SubmissionPackage": "submission_package",
+        "finalReport": "checkpoints/stage-S9-finalize-closeout.md"
+  },
+  "decisions": [
+    {
+      "stage": "S0",
+      "decision": "Use checkpoint-first ARS workflow. Do not run analysis or draft article until user confirms each stage."
+    },
+    {
+      "stage": "S0",
+      "decision": "User clarified the output target is an SCI journal manuscript, not a training article or public essay."
+    },
+    {
+      "stage": "S1",
+      "decision": "Initial literature scan suggests common diabetes risk-factor analyses are too saturated for SCI; prioritize a sharper RQ around undiagnosed dysglycemia, metabolically unhealthy normal weight adults, eGDR, or lifestyle clustering."
+    },
+    {
+      "stage": "S1",
+      "decision": "User selected the conservative RQ1 route: use current NHANES 2017-2018 data to study HbA1c-defined undiagnosed diabetes among self-reported non-diabetic adults."
+    },
+    {
+      "stage": "S2",
+      "decision": "User confirmed S3 execution and accepted the five method points: single 2017-2018 cycle, R survey package, fasting glucose as sensitivity analysis, pregnancy exclusion check, prediabetes as supplementary analysis."
+    },
+    {
+      "stage": "S3",
+      "decision": "R survey analysis completed locally. Key execution issue: full model is parameter-heavy for a single NHANES cycle's design degrees of freedom; interpretation should emphasize CI and consider a parsimonious model in S4/S2 revision."
+    },
+    {
+      "stage": "S4",
+      "decision": "Interpretation stage recommends a parsimonious regression model or S3b revision before moving to outline, because the current full model is too parameter-heavy for a single-cycle NHANES SCI manuscript."
+    },
+    {
+      "stage": "S3b",
+      "decision": "User confirmed returning to S3b to generate a parsimonious main model and final Table 2 before S5 outline."
+    },
+    {
+      "stage": "S3b",
+      "decision": "S3b completed. Recommended final Table 2 is the waist-circumference parsimonious model, with BMI and categorical screening models as sensitivity analyses."
+    },
+    {
+      "stage": "S5",
+      "decision": "User confirmed entering S5 outline. Produce IMRaD outline and table/figure plan only; do not draft manuscript text."
+    },
+    {
+      "stage": "S5b",
+      "decision": "User requested a literature source matrix before S6 and set S6 target manuscript length to 6,500-8,500 English words."
+    },
+    {
+      "stage": "S5b",
+      "decision": "Literature matrix created at checkpoints/stage-S5b-literature-matrix.md. Official sources are usable now; several PubMed/PMC candidate studies are marked for S7 DOI/full-text verification."
+    },
+    {
+      "stage": "S6",
+      "decision": "User confirmed S6. Draft English SCI manuscript at 6,500-8,500 words, allow limited targeted literature supplementation, and leave full citation verification to S7."
+    },
+    {
+      "stage": "S7",
+      "decision": "User said continue after S6. S7 integrity/citation check completed. Core data values match local outputs, but citation layer is not submission-ready; recommend S7b final reference verification and citation replacement before S8."
+    },
+    {
+      "stage": "S7b",
+      "decision": "User confirmed entering S7b. A citation-clean manuscript draft was created without overwriting S6. Working references were replaced with a verified 17-item Vancouver-style reference list; unverified placeholders were removed or downgraded. Recommend S8 reviewer-style critique next."
+    },
+        {
+            "stage": "S8",
+            "decision": "User confirmed entering S8. Simulated peer review completed on the S7b citation-clean draft. Editorial decision: Major Revision. Recommended next step is S8b revision implementation, not S9 finalization."
+        },
+        {
+            "stage": "S8b",
+            "decision": "User confirmed entering S8b. Major-revision implementation completed: actual tables and figures generated, fasting-glucose sensitivity recalculated with WTSAF2YR, missingness/model sample details added, targeted equity/screening references inserted, and a revised 7,812-word manuscript created. S9 remains pending until explicit user confirmation."
+        },
+        {
+            "stage": "S9",
+            "decision": "User confirmed entering S9. A generic SCI submission-preparation package was produced, including final manuscript Markdown/DOCX, figures, tables, STROBE mapping, cover letter draft, response-to-reviewers draft, readiness checklist, package manifest, and closeout report. Target-journal-specific formatting remains a human decision because no journal was specified."
+        }
+  ],
+  "risks": [
+    "NHANES is a complex survey; formal epidemiologic inference requires weights, strata and PSU handling.",
+    "Cross-sectional public-use data cannot support causal claims.",
+    "Target reader is now scholarly reviewers/editors, but the research question still requires novelty and feasibility assessment before analysis."
+  ],
+  "failures": []
+}

@@ -1,0 +1,79 @@
+{
+  "workflow": "academic-research-suite-checkpoint-first",
+  "topic": "",
+  "createdAt": "",
+  "updatedAt": "",
+  "currentStage": "S0",
+  "stopPoint": "",
+  "checkpointFirst": true,
+  "autoContinueAllowed": false,
+  "stages": {
+    "S0_intake": {
+      "status": "pending",
+      "artifact": "",
+      "userConfirmed": false,
+      "confirmedAt": ""
+    },
+    "S1_research_question": {
+      "status": "pending",
+      "artifact": "",
+      "userConfirmed": false,
+      "confirmedAt": ""
+    },
+    "S2_method_analysis_plan": {
+      "status": "pending",
+      "artifact": "",
+      "userConfirmed": false,
+      "confirmedAt": ""
+    },
+    "S3_evidence_data_execution": {
+      "status": "pending",
+      "artifact": "",
+      "userConfirmed": false,
+      "confirmedAt": ""
+    },
+    "S4_interpretation": {
+      "status": "pending",
+      "artifact": "",
+      "userConfirmed": false,
+      "confirmedAt": ""
+    },
+    "S5_outline": {
+      "status": "pending",
+      "artifact": "",
+      "userConfirmed": false,
+      "confirmedAt": ""
+    },
+    "S6_draft": {
+      "status": "pending",
+      "artifact": "",
+      "userConfirmed": false,
+      "confirmedAt": ""
+    },
+    "S7_integrity_citation_check": {
+      "status": "pending",
+      "artifact": "",
+      "userConfirmed": false,
+      "confirmedAt": ""
+    },
+    "S8_review_revision": {
+      "status": "pending",
+      "artifact": "",
+      "userConfirmed": false,
+      "confirmedAt": ""
+    },
+    "S9_finalize_closeout": {
+      "status": "pending",
+      "artifact": "",
+      "userConfirmed": false,
+      "confirmedAt": ""
+    }
+  },
+  "artifacts": {
+    "runDirectory": "",
+    "finalReport": ""
+  },
+  "decisions": [],
+  "risks": [],
+  "failures": []
+}

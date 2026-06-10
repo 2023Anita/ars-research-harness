@@ -1,0 +1,12 @@
+Variable,OR (95% CI),Design df,Model n
+"Age, per year",1.025 (0.983-1.068),15,3621
+Female vs male,1.861 (0.728-4.756),15,3621
+Mexican American vs Non-Hispanic White,3.072 (0.608-15.538),15,3621
+Non-Hispanic Asian vs Non-Hispanic White,5.986 (1.859-19.276),15,3621
+Non-Hispanic Black vs Non-Hispanic White,4.099 (1.334-12.600),15,3621
+Other Hispanic vs Non-Hispanic White,3.737 (0.665-20.989),15,3621
+Other/Multiracial vs Non-Hispanic White,1.774 (0.390-8.077),15,3621
+"Waist circumference, per cm",1.051 (1.030-1.073),15,3621
+"Mean systolic BP, per mmHg",1.012 (0.985-1.040),15,3621
+"Non-HDL cholesterol, per mg/dL",1.016 (1.008-1.023),15,3621
+Any reported physical activity vs none,0.478 (0.211-1.078),15,3621

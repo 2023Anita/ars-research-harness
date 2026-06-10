@@ -1,0 +1,27 @@
+variable,group,estimate,se,metric
+"Age, years",0,46.511740591340185,0.5714281941771775,weighted_mean
+"Age, years",1,54.70964231815737,1.8332693016669237,weighted_mean
+"Obesity, %",0,38.801183310389256,1.7880418174859372,weighted_percent
+"Obesity, %",1,75.80596078033199,3.4113554829270676,weighted_percent
+"BMI, kg/m2",0,29.1593801029332,0.22130828853170978,weighted_mean
+"BMI, kg/m2",1,35.06754462074943,0.45468369044650886,weighted_mean
+"Waist circumference, cm",0,98.94317377779618,0.6578065984531445,weighted_mean
+"Waist circumference, cm",1,112.89374208795874,1.2547150206889814,weighted_mean
+"Mean systolic BP, mmHg",0,122.39291037470784,0.5168981050416398,weighted_mean
+"Mean systolic BP, mmHg",1,135.8981339664939,3.160504912252266,weighted_mean
+"Mean diastolic BP, mmHg",0,72.88998153448281,0.5831130511578233,weighted_mean
+"Mean diastolic BP, mmHg",1,77.05319347490091,1.8269442464481354,weighted_mean
+"HbA1c, %",0,5.419286365094561,0.009796638360757724,weighted_mean
+"HbA1c, %",1,7.496620565313429,0.21713910460574795,weighted_mean
+"Total cholesterol, mg/dL",0,190.3150776919811,1.6106214329212392,weighted_mean
+"Total cholesterol, mg/dL",1,211.3867397660013,4.872386242212032,weighted_mean
+"HDL cholesterol, mg/dL",0,54.752969634740936,0.5407359025944718,weighted_mean
+"HDL cholesterol, mg/dL",1,46.534544460930654,1.1412424007619921,weighted_mean
+"Non-HDL cholesterol, mg/dL",0,135.56210805724015,1.6575874508819082,weighted_mean
+"Non-HDL cholesterol, mg/dL",1,164.8521953050707,4.871574848416131,weighted_mean
+"Current smoker, %",0,18.229414568546034,1.2143130278959098,weighted_percent
+"Current smoker, %",1,14.752942577795016,6.721672899536997,weighted_percent
+"Short sleep <7h, %",0,24.797919744239902,1.4527130084752662,weighted_percent
+"Short sleep <7h, %",1,30.242161274155617,6.431728286408022,weighted_percent
+"Any reported physical activity, %",0,80.99782562489573,0.9286567209336639,weighted_percent
+"Any reported physical activity, %",1,56.102812172598426,7.031933178188539,weighted_percent

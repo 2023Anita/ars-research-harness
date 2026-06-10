@@ -1,0 +1,12 @@
+variable,nonmissing_n,missing_n,missing_percent
+RIDAGEYR,4004,0,0.0
+sex,4004,0,0.0
+race_ethnicity,4004,0,0.0
+BMXWAIST,3816,188,4.7
+BMXBMI,3947,57,1.42
+sbp_mean,3814,190,4.75
+non_hdl,3932,72,1.8
+any_activity,4004,0,0.0
+obesity,3947,57,1.42
+measured_hypertension,3814,190,4.75
+LBXGLU,1919,2085,52.07

@@ -51,7 +51,7 @@ Key outputs:
 
 Figure 2 shows the central control loop: plan, produce an artifact, validate it, wait for human confirmation, then move to the next stage. The "no auto-continue" rule is the main difference between this harness and ordinary one-shot AI writing.
 
-S0-S9 covers intake, research-question framing, methods planning, data execution, interpretation, outline, draft, integrity checks, reviewer-style revision, and final package generation.
+S0-S9 covers intake, research-question framing, target-journal comparator calibration, methods planning, data execution, interpretation, outline, draft, integrity checks, reviewer-style revision, and final package generation.
 
 ## Engineering View
 

@@ -7,6 +7,8 @@
   "stopPoint": "sci-submission-ready-draft-after-integrity-check",
   "checkpointFirst": true,
   "autoContinueAllowed": false,
+  "targetJournalGateSkipped": false,
+  "targetJournalGateSkipReason": "",
   "stages": {
     "S0_intake": {
       "status": "complete",
@@ -19,6 +21,12 @@
       "artifact": "checkpoints/stage-S1-research-question.md",
       "userConfirmed": true,
       "confirmedAt": "2026-06-10T09:12:00+0800"
+    },
+    "S1b_target_journal_fit": {
+      "status": "complete",
+      "artifact": "checkpoints/stage-S1b-target-journal-fit.md",
+      "userConfirmed": true,
+      "confirmedAt": "2026-06-10T09:16:00+0800"
     },
     "S2_method_analysis_plan": {
       "status": "complete",
@@ -71,6 +79,7 @@
   },
   "artifacts": {
         "runDirectory": "examples/nhanes-undiagnosed-diabetes",
+        "targetJournalFit": "checkpoints/stage-S1b-target-journal-fit.md",
         "finalReport": "",
         "s7bCitationCleanDraft": "checkpoints/stage-S7b-citation-clean-draft.md",
         "s7bReport": "checkpoints/stage-S7b-final-reference-verification.md",
@@ -96,6 +105,10 @@
     {
       "stage": "S1",
       "decision": "User selected the conservative RQ1 route: use current NHANES 2017-2018 data to study HbA1c-defined undiagnosed diabetes among self-reported non-diabetic adults."
+    },
+    {
+      "stage": "S1b",
+      "decision": "Target journal gate completed. BMC Public Health selected as the working target journal after comparing five candidates, and five BMC Public Health NHANES-style comparator articles were used to calibrate word count and table/figure strategy."
     },
     {
       "stage": "S2",

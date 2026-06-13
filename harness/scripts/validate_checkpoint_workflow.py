@@ -12,6 +12,7 @@ from pathlib import Path
 STAGE_KEYS = [
     "S0_intake",
     "S1_research_question",
+    "S1b_target_journal_fit",
     "S2_method_analysis_plan",
     "S3_evidence_data_execution",
     "S4_interpretation",
@@ -25,6 +26,8 @@ STAGE_KEYS = [
 TERMINAL_STATUSES = {"complete", "skipped"}
 ACTIVE_STATUSES = {"pending", "in_progress", "blocked", "needs_user_decision"}
 ALLOWED_STATUSES = TERMINAL_STATUSES | ACTIVE_STATUSES
+TARGET_JOURNAL_STAGE = "S1b_target_journal_fit"
+POST_TARGET_JOURNAL_STAGES = STAGE_KEYS[STAGE_KEYS.index("S2_method_analysis_plan") :]
 
 
 def fail(message: str) -> dict:
@@ -50,6 +53,20 @@ def validate(path: Path) -> dict:
     missing = [key for key in STAGE_KEYS if key not in stages]
     if missing:
         return fail(f"missing stages: {', '.join(missing)}")
+
+    target_journal_stage = stages[TARGET_JOURNAL_STAGE]
+    target_journal_status = target_journal_stage.get("status")
+    post_gate_complete = [
+        key for key in POST_TARGET_JOURNAL_STAGES
+        if stages[key].get("status") in TERMINAL_STATUSES
+    ]
+    if post_gate_complete and target_journal_status not in TERMINAL_STATUSES:
+        return fail("target journal gate must be complete or explicitly skipped before S2 or later stages")
+    if target_journal_status == "skipped":
+        skip_allowed = data.get("targetJournalGateSkipped") is True
+        skip_reason = str(data.get("targetJournalGateSkipReason", "")).strip()
+        if not skip_allowed or not skip_reason:
+            return fail("S1b target journal gate is skipped but targetJournalGateSkipped and targetJournalGateSkipReason are not set")
 
     completed_indices = []
     for idx, key in enumerate(STAGE_KEYS):

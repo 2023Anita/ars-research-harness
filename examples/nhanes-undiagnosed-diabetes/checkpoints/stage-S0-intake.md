@@ -28,14 +28,15 @@
 这是一个跨多个 ARS 阶段的研究到文章任务，建议走：
 
 1. S1 Research Question：确认文章研究问题、用途、目标读者和范围。
-2. S2 Method / Analysis Plan：确认变量、统计方法、输出表格和文章结构需要的数据。
-3. S3 Evidence / Data Execution：执行本地数据分析和必要官方来源核验。
-4. S4 Interpretation：解释结果、限制和可写入文章的结论。
-5. S5 Outline：确认文章大纲。
-6. S6 Draft：写文章草稿。
-7. S7 Integrity / Citation Check：检查数据、引用、统计和表述边界。
-8. S8 Review / Revision：如需要，做审稿式修订。
-9. S9 Finalize / Closeout：定稿与记忆收尾。
+2. S1b Target Journal & Comparator Corpus：推荐 5 个目标期刊候选，用户确定目标期刊后，用至少 5 篇同刊相似原文校准体裁、字数和表图策略。
+3. S2 Method / Analysis Plan：确认变量、统计方法、输出表格和文章结构需要的数据。
+4. S3 Evidence / Data Execution：执行本地数据分析和必要官方来源核验。
+5. S4 Interpretation：解释结果、限制和可写入文章的结论。
+6. S5 Outline：确认文章大纲。
+7. S6 Draft：写文章草稿。
+8. S7 Integrity / Citation Check：检查数据、引用、统计和表述边界。
+9. S8 Review / Revision：如需要，做审稿式修订。
+10. S9 Finalize / Closeout：定稿与记忆收尾。
 
 ## 当前仍需用户确认的关键点
 
@@ -53,4 +54,4 @@
 
 ## 下一阶段建议
 
-进入 S1 Research Question，优先评估哪些研究问题可能具备 SCI 投稿价值，包括新颖性、可回答性、可用变量、统计可行性和潜在目标期刊方向。
+进入 S1 Research Question，优先评估哪些研究问题可能具备 SCI 投稿价值，包括新颖性、可回答性、可用变量、统计可行性和潜在目标期刊方向。S1 确认后必须进入 S1b，不能直接进入方法定稿或正文写作。

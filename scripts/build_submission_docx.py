@@ -1,7 +1,9 @@
 from __future__ import annotations
 
-import re
 import argparse
+import csv
+import re
+from dataclasses import dataclass
 from pathlib import Path
 
 from docx import Document
@@ -15,6 +17,15 @@ from docx.shared import Inches, Pt, RGBColor
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_PACKAGE_DIR = REPO_ROOT / "examples" / "nhanes-undiagnosed-diabetes" / "submission_package"
+CITATION_RE = re.compile(r"\[([0-9,\-\s]+)\]")
+REFERENCE_RE = re.compile(r"^(\d+)\.\s+(.*)")
+
+
+@dataclass(frozen=True)
+class CitationOrderedLines:
+    lines: list[str]
+    citation_map: dict[int, int]
+    uncited_reference_numbers: list[int]
 
 
 def set_cell_shading(cell, fill: str) -> None:
@@ -138,6 +149,119 @@ def configure_document(doc: Document) -> None:
         style.paragraph_format.space_after = Pt(5)
 
 
+def expand_citation_numbers(citation: str) -> list[int]:
+    numbers: list[int] = []
+    for part in citation.split(","):
+        part = part.strip()
+        if not part:
+            continue
+        if "-" in part:
+            start_text, end_text = [piece.strip() for piece in part.split("-", 1)]
+            start = int(start_text)
+            end = int(end_text)
+            step = 1 if start <= end else -1
+            numbers.extend(range(start, end + step, step))
+        else:
+            numbers.append(int(part))
+    return numbers
+
+
+def compact_citation_numbers(numbers: list[int]) -> str:
+    if not numbers:
+        return ""
+    ranges: list[str] = []
+    start = numbers[0]
+    previous = numbers[0]
+    for number in numbers[1:]:
+        if number == previous + 1:
+            previous = number
+            continue
+        ranges.append(f"{start}-{previous}" if start != previous else str(start))
+        start = previous = number
+    ranges.append(f"{start}-{previous}" if start != previous else str(start))
+    return ",".join(ranges)
+
+
+def split_reference_section(lines: list[str]) -> tuple[list[str], list[str], list[str], list[str]]:
+    for idx, line in enumerate(lines):
+        if line.strip() == "# References":
+            heading = lines[idx : idx + 1]
+            after_heading = lines[idx + 1 :]
+            last_reference_idx = -1
+            for ref_idx, ref_line in enumerate(after_heading):
+                if REFERENCE_RE.match(ref_line.strip()):
+                    last_reference_idx = ref_idx
+            if last_reference_idx == -1:
+                return lines[:idx], heading, [], after_heading
+            return lines[:idx], heading, after_heading[: last_reference_idx + 1], after_heading[last_reference_idx + 1 :]
+    return lines, [], [], []
+
+
+def parse_reference_entries(reference_lines: list[str]) -> dict[int, str]:
+    entries: dict[int, str] = {}
+    for line in reference_lines:
+        match = REFERENCE_RE.match(line.strip())
+        if match:
+            entries[int(match.group(1))] = match.group(2)
+    return entries
+
+
+def prepare_citation_ordered_lines(lines: list[str]) -> CitationOrderedLines:
+    body_lines, reference_heading, reference_lines, trailing_lines = split_reference_section(lines)
+    reference_entries = parse_reference_entries(reference_lines)
+    citation_order: list[int] = []
+    seen: set[int] = set()
+
+    for line in body_lines:
+        for match in CITATION_RE.finditer(line):
+            for number in expand_citation_numbers(match.group(1)):
+                if number not in seen:
+                    seen.add(number)
+                    citation_order.append(number)
+
+    missing = [number for number in citation_order if number not in reference_entries]
+    if missing:
+        missing_text = ", ".join(str(number) for number in missing)
+        raise ValueError(f"Missing reference entries: {missing_text}")
+
+    citation_map = {old_number: new_number for new_number, old_number in enumerate(citation_order, start=1)}
+
+    def rewrite_line(line: str) -> str:
+        def rewrite_match(match: re.Match[str]) -> str:
+            old_numbers = expand_citation_numbers(match.group(1))
+            new_numbers = sorted({citation_map[number] for number in old_numbers})
+            return f"[{compact_citation_numbers(new_numbers)}]"
+
+        return CITATION_RE.sub(rewrite_match, line)
+
+    ordered_references = [
+        f"{new_number}. {reference_entries[old_number]}"
+        for old_number, new_number in sorted(citation_map.items(), key=lambda item: item[1])
+    ]
+    uncited = sorted(set(reference_entries) - set(citation_order))
+    ordered_lines = [rewrite_line(line) for line in body_lines]
+    if reference_heading:
+        ordered_lines.extend(reference_heading)
+        ordered_lines.append("")
+        ordered_lines.extend(ordered_references)
+        ordered_lines.extend(trailing_lines)
+    return CitationOrderedLines(
+        lines=ordered_lines,
+        citation_map=citation_map,
+        uncited_reference_numbers=uncited,
+    )
+
+
+def write_reference_order_report(ordered: CitationOrderedLines, package_dir: Path) -> None:
+    rows = [["old_reference_number", "new_reference_number", "status"]]
+    for old_number, new_number in sorted(ordered.citation_map.items(), key=lambda item: item[1]):
+        rows.append([str(old_number), str(new_number), "cited"])
+    for old_number in ordered.uncited_reference_numbers:
+        rows.append([str(old_number), "", "uncited_excluded"])
+    with (package_dir / "reference_order_check.csv").open("w", newline="", encoding="utf-8") as handle:
+        csv.writer(handle, lineterminator="\n").writerows(rows)
+
+
 def build_docx(package_dir: Path = DEFAULT_PACKAGE_DIR) -> Path:
     source_md = package_dir / "manuscript_final_generic_sci.md"
     output_docx = package_dir / "manuscript_final_with_tables_figures.docx"
@@ -145,7 +269,9 @@ def build_docx(package_dir: Path = DEFAULT_PACKAGE_DIR) -> Path:
     doc = Document()
     configure_document(doc)
 
-    lines = source_md.read_text(encoding="utf-8").splitlines()
+    ordered_lines = prepare_citation_ordered_lines(source_md.read_text(encoding="utf-8").splitlines())
+    write_reference_order_report(ordered_lines, package_dir)
+    lines = ordered_lines.lines
     idx = 0
     pending_table_caption: str | None = None
     skip_supplementary_bullets = False

@@ -221,7 +221,9 @@ Is the non-HDL cholesterol to HDL cholesterol ratio associated with prediabetes 
 
 ## 下一阶段建议
 
-进入 S2 Method / Analysis Plan 前，需要用户在以下选项中选择：
+进入 S2 Method / Analysis Plan 前，必须先进入 **S1b Target Journal & Comparator Corpus**。S1b 需要推荐 5 个目标期刊候选，用户确定 1 个 working target journal 后，再用至少 5 篇同目标期刊相似 original research 文章校准正文长度、主文表图数量和 supplement 策略。
+
+S1b 前，需要用户在以下研究问题选项中选择：
 
 1. **稳妥路线**：RQ1，当前数据直接做未诊断糖尿病。
 2. **更有亮点路线**：RQ1 + RQ2，聚焦正常体重/非肥胖人群的未诊断糖代谢异常。

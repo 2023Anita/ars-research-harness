@@ -1,6 +1,6 @@
 # NHANES Undiagnosed Diabetes Case Study
 
-This example demonstrates the full S0-S9 research harness using NHANES 2017-2018 public-use data.
+This example demonstrates the full S0-S9 research harness using NHANES 2017-2018 public-use data, including the S1b target-journal and comparator-corpus gate before method finalization.
 
 Research question: What is the weighted prevalence of HbA1c-defined undiagnosed diabetes among self-reported non-diabetic U.S. adults, and what demographic, cardiometabolic, anthropometric, and lifestyle factors are associated with it?
 

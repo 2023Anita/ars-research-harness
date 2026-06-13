@@ -12,7 +12,9 @@
 
 ### 目标期刊方向
 
-优先考虑以下类型的 SCI / ESCI / PubMed-indexed 期刊：
+S1b 已完成目标期刊与 comparator corpus 门禁，working target journal 为 **BMC Public Health**。本阶段字数、表图数量和 supplement 策略以 `stage-S1b-target-journal-fit.md` 中的目标期刊规则和 5 篇 BMC Public Health NHANES / 横断面 comparator articles 为依据。
+
+初筛时曾比较以下类型的 SCI / ESCI / PubMed-indexed 期刊：
 
 - 公共卫生与慢病流行病学。
 - 糖尿病和代谢疾病。
@@ -41,7 +43,7 @@
 
 ## 文章结构
 
-目标正文长度：约 3,500-4,500 英文词，不含摘要、表格、参考文献和补充材料。
+目标正文长度：约 **4,500-6,000 英文词**，不含摘要、表格、参考文献和补充材料。该范围来自 S1b comparator corpus，而不是凭经验设定。
 
 ## Abstract（250-300 words）
 
@@ -257,6 +259,8 @@
 
 ## 表图规划
 
+表图数量依据 S1b 的 BMC Public Health comparator corpus 校准：主文控制为 2 figures + 2 tables，复杂敏感性分析和变量定义放 supplement。
+
 ### Main manuscript
 
 | 编号 | 标题 | 来源 |
@@ -299,6 +303,6 @@
 进入 S6 Draft 前，建议先确认：
 
 1. 是否采用推荐英文题目。
-2. 是否按 3,500-4,500 英文词目标写初稿。
+2. 是否按 S1b/S5 校准后的 4,500-6,000 英文词目标写初稿。
 3. 是否需要中文初稿、英文 SCI 初稿，还是中英双语结构稿。
 4. 是否先补文献来源矩阵再写 Introduction/Discussion。

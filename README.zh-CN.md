@@ -53,6 +53,7 @@ python3 harness/scripts/validate_checkpoint_workflow.py examples/nhanes-undiagno
 |---|---|---|
 | S0 | 明确目标、数据、边界 | intake checkpoint |
 | S1 | 收敛研究问题 | research question |
+| S1b | 确定目标期刊和相似文章体裁 | journal fit + comparator corpus |
 | S2 | 制定方法和分析方案 | method plan |
 | S3 | 执行数据分析 | results tables |
 | S3b | 修正模型复杂度 | parsimonious model |

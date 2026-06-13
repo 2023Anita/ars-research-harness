@@ -182,12 +182,19 @@ def compact_citation_numbers(numbers: list[int]) -> str:
     return ",".join(ranges)
 
 
-def split_reference_section(lines: list[str]) -> tuple[list[str], list[str], list[str]]:
+def split_reference_section(lines: list[str]) -> tuple[list[str], list[str], list[str], list[str]]:
     for idx, line in enumerate(lines):
         if line.strip() == "# References":
             heading = lines[idx : idx + 1]
-            return lines[:idx], heading, lines[idx + 1 :]
-    return lines, [], []
+            after_heading = lines[idx + 1 :]
+            last_reference_idx = -1
+            for ref_idx, ref_line in enumerate(after_heading):
+                if REFERENCE_RE.match(ref_line.strip()):
+                    last_reference_idx = ref_idx
+            if last_reference_idx == -1:
+                return lines[:idx], heading, [], after_heading
+            return lines[:idx], heading, after_heading[: last_reference_idx + 1], after_heading[last_reference_idx + 1 :]
+    return lines, [], [], []
 
 
 def parse_reference_entries(reference_lines: list[str]) -> dict[int, str]:
@@ -200,7 +207,7 @@ def parse_reference_entries(reference_lines: list[str]) -> dict[int, str]:
 
 
 def prepare_citation_ordered_lines(lines: list[str]) -> CitationOrderedLines:
-    body_lines, reference_heading, reference_lines = split_reference_section(lines)
+    body_lines, reference_heading, reference_lines, trailing_lines = split_reference_section(lines)
     reference_entries = parse_reference_entries(reference_lines)
     citation_order: list[int] = []
     seen: set[int] = set()
@@ -237,6 +244,7 @@ def prepare_citation_ordered_lines(lines: list[str]) -> CitationOrderedLines:
         ordered_lines.extend(reference_heading)
         ordered_lines.append("")
         ordered_lines.extend(ordered_references)
+        ordered_lines.extend(trailing_lines)
     return CitationOrderedLines(
         lines=ordered_lines,
         citation_map=citation_map,
@@ -251,7 +259,7 @@ def write_reference_order_report(ordered: CitationOrderedLines, package_dir: Pat
     for old_number in ordered.uncited_reference_numbers:
         rows.append([str(old_number), "", "uncited_excluded"])
     with (package_dir / "reference_order_check.csv").open("w", newline="", encoding="utf-8") as handle:
-        csv.writer(handle).writerows(rows)
+        csv.writer(handle, lineterminator="\n").writerows(rows)
 
 
 def build_docx(package_dir: Path = DEFAULT_PACKAGE_DIR) -> Path:

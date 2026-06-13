@@ -12,6 +12,7 @@ The submission DOCX builder previously rendered the manuscript Markdown in the o
 - Builds an old-to-new mapping based on first citation appearance.
 - Rewrites in-text citation groups with sorted, compact final numbers.
 - Rewrites the References section in the same final order.
+- Preserves manuscript sections that appear after the numbered References list, such as data availability or ethics statements.
 - Raises an error if the body cites a reference number that is absent from the References section.
 - Writes `reference_order_check.csv` beside the generated DOCX as an audit trail.
 

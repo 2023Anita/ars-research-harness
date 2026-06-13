@@ -1,6 +1,8 @@
 import unittest
+from tempfile import TemporaryDirectory
+from pathlib import Path
 
-from scripts.build_submission_docx import prepare_citation_ordered_lines
+from scripts.build_submission_docx import prepare_citation_ordered_lines, write_reference_order_report
 
 
 class ReferenceOrderingTest(unittest.TestCase):
@@ -40,6 +42,43 @@ class ReferenceOrderingTest(unittest.TestCase):
     def test_raises_when_citation_has_no_reference_entry(self):
         with self.assertRaisesRegex(ValueError, "Missing reference entries: 9"):
             prepare_citation_ordered_lines(["Body [9].", "# References", "1. Only ref."])
+
+    def test_preserves_trailing_sections_after_numbered_references(self):
+        lines = [
+            "# Title",
+            "Body cites later reference [2].",
+            "",
+            "# References",
+            "",
+            "1. Uncited reference.",
+            "2. Cited reference.",
+            "",
+            "---",
+            "",
+            "# Data Availability",
+            "Data remain available.",
+            "",
+            "# Ethics Statement",
+            "No additional participant contact occurred.",
+        ]
+
+        ordered = prepare_citation_ordered_lines(lines)
+
+        self.assertIn("# Data Availability", ordered.lines)
+        self.assertIn("Data remain available.", ordered.lines)
+        self.assertIn("# Ethics Statement", ordered.lines)
+        self.assertIn("No additional participant contact occurred.", ordered.lines)
+        self.assertEqual(ordered.lines[5], "1. Cited reference.")
+
+    def test_reference_order_report_uses_lf_line_endings(self):
+        ordered = prepare_citation_ordered_lines(["Body [1].", "# References", "1. Ref."])
+
+        with TemporaryDirectory() as tmpdir:
+            write_reference_order_report(ordered, Path(tmpdir))
+            data = (Path(tmpdir) / "reference_order_check.csv").read_bytes()
+
+        self.assertNotIn(b"\r\n", data)
+        self.assertIn(b"old_reference_number,new_reference_number,status\n", data)
 
 
 if __name__ == "__main__":
